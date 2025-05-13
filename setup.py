@@ -3,7 +3,7 @@ import re
 from setuptools import setup, find_packages
 
 def get_version():
-    with open(os.path.join("GPT", "__init__.py"), "r") as f:
+    with open(os.path.join("__init__.py"), "r") as f:
         match = re.search(r'__version__\s*=\s*[\'"]([^\'"]+)[\'"]', f.read())
         return match.group(1)
 

@@ -6,7 +6,7 @@ from torch.utils.data import Dataset, DataLoader
 This module is used to preprocess the raw text data to a Dataloader object as a input-target pairs
 input is a sliding widow of context size length with token idx and targets is just the inputs offset by 1
 """
-class GPTDatasetV1(Dataset):
+class GPTDataset(Dataset):
     def __init__(self, txt, tokenizer, max_length, stride):
         self.input_ids = []
         self.target_ids = []
@@ -28,15 +28,15 @@ class GPTDatasetV1(Dataset):
         return self.input_ids[idx], self.target_ids[idx]
 
 
-def create_dataloader_v1(txt, batch_size=4, max_length=256,
+def create_dataloader(txt, batch_size=4, max_length=256,
                          stride=128, shuffle=True, drop_last=True,
                          num_workers=0):
 
     # Initialize the tokenizer
-    tokenizer = tiktoken.get_encoding("model")
+    tokenizer = tiktoken.get_encoding("gpt2")
 
     # Create dataset
-    dataset = GPTDatasetV1(txt, tokenizer, max_length, stride)
+    dataset = GPTDataset(txt, tokenizer, max_length, stride)
 
     # Create dataloader
     dataloader = DataLoader(

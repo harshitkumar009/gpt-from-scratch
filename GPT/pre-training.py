@@ -5,11 +5,11 @@ import pathlib
 import tiktoken
 from GPT.GPT2 import GPTModel
 from GPT.utils import train_model
-from GPT.data_preprocessing import create_dataloader_v1
+from GPT.data_preprocessing import create_dataloader
 
 current_path = pathlib.Path(__file__).resolve().parent.parent
 
-tokenizer = tiktoken.get_encoding("model")
+tokenizer = tiktoken.get_encoding("gpt2")
 
 with open('../base_config.json', 'r') as f:
     GPT_CONFIG_124M = json.load(f)
@@ -28,7 +28,7 @@ train_ratio = 0.90
 split_idx = int(train_ratio * len(text_data))
 train_data = text_data[:split_idx]
 val_data = text_data[split_idx:]
-train_loader = create_dataloader_v1(
+train_loader = create_dataloader(
     train_data,
     batch_size=2,
     max_length=GPT_CONFIG_124M["context_length"],
@@ -38,7 +38,7 @@ train_loader = create_dataloader_v1(
     num_workers=0
 )
 
-val_loader = create_dataloader_v1(
+val_loader = create_dataloader(
     val_data,
     batch_size=2,
     max_length=GPT_CONFIG_124M["context_length"],
