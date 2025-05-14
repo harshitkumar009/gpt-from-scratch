@@ -8,7 +8,8 @@ from generate_logic import generate_and_print_sample
 model_type = "gpt2"
 with open('../../base_config.json', 'r') as f:
     configs = json.load(f)
-    GPT_CONFIG = configs["base_configs"].update(configs["model_configs"][model_type])
+    GPT_CONFIG = configs["base_configs"]
+    GPT_CONFIG.update(configs["model_configs"][model_type])
 
 tokenizer = tiktoken.get_encoding(model_type)
 model = GPTModel(GPT_CONFIG)
@@ -17,7 +18,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 """
 Loading foundational model weights using Hugging Face transformers library
 """
-
+state_dict = load_foundational_model(model_type)
 model = load_weights(n_layers=GPT_CONFIG["n_layers"], model=model, state_dict=state_dict)
 """
 Loading the locally trained weights trained on only harry_potter.txt dataset

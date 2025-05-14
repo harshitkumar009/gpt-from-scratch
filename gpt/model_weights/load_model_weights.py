@@ -11,7 +11,6 @@ def load_foundational_model(model_type):
     state_dict = foundational_model.state_dict()
     return state_dict
 
-
 """
 Below is the implementation for loading already trained model weights to our build_llm model
 """
