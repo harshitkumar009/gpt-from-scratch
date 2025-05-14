@@ -2,8 +2,7 @@ import json
 import torch
 import tiktoken
 from gpt.build_llm.gpt2 import GPTModel
-from transformers import GPT2LMHeadModel
-from gpt.model_weights.load_model_weights import load_weights
+from gpt.model_weights.load_model_weights import load_weights,load_foundational_model
 from generate_logic import generate_and_print_sample
 
 model_type = "gpt2"
@@ -18,8 +17,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 """
 Loading foundational model weights using Hugging Face transformers library
 """
-foundational_model = GPT2LMHeadModel.from_pretrained("gpt2")
-state_dict = foundational_model.state_dict()
+
 model = load_weights(n_layers=GPT_CONFIG["n_layers"], model=model, state_dict=state_dict)
 """
 Loading the locally trained weights trained on only harry_potter.txt dataset

@@ -1,5 +1,15 @@
 import torch
 import numpy as np
+from transformers import GPT2LMHeadModel
+
+
+"""
+Loading foundational model weights using Hugging Face transformers library
+"""
+def load_foundational_model(model_type):
+    foundational_model = GPT2LMHeadModel.from_pretrained(model_type)
+    state_dict = foundational_model.state_dict()
+    return state_dict
 
 
 """
