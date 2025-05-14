@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from GPT.transformer_block import LayerNorm, TransformerBlock
+from gpt.build_llm.transformer_block import LayerNorm, TransformerBlock
 
 """
 Below is the implementation of GPT2 Architecture

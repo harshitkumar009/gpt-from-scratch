@@ -3,7 +3,7 @@ import numpy as np
 
 
 """
-Below is the implementation for loading already trained model weights to our GPT model
+Below is the implementation for loading already trained model weights to our build_llm model
 """
 def assign(left, right):
     if left.shape != right.shape:

@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from GPT.attention_mechanisms import MultiHeadAttention
+from gpt.build_llm.attention_mechanisms import MultiHeadAttention
 
 """
 Below is the Layernorm implementation with trainable weights and biases

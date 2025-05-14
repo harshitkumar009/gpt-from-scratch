@@ -1,5 +1,5 @@
 import torch
-from GPT.utils import text_to_token_ids, token_ids_to_text
+from gpt.build_llm.utils import text_to_token_ids, token_ids_to_text
 
 """
 Below is the implementation for iteratively generating new token using past tokens
